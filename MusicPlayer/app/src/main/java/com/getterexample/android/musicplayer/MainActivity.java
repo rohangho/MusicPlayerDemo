@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         mp.setDisplay(holder);
         mp.start();
         mp.setLooping(true);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
     }
 
     @Override

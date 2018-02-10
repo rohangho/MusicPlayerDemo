@@ -6,6 +6,24 @@
     android:id="@+id/parent"
     android:layout_height="match_parent">
 
+
+
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.getterexample.android.musicplayer.MainActivity">
+
+
+
+    <SurfaceView
+        android:id="@+id/surface"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp" />
+
+</FrameLayout>
+
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -33,21 +51,4 @@
         android:background="#0D0FC3"
         android:text="Online"/>
 
-
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.getterexample.android.musicplayer.MainActivity">
-
-
-
-    <SurfaceView
-        android:id="@+id/surface"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp" />
-
-
-
-</FrameLayout>
 </RelativeLayout>
