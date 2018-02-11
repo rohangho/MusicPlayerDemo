@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class OfflineAdapter extends RecyclerView.Adapter<OfflineAdapter.ViewHold
 
     Context context;
     ArrayList<String> name;
+    public static int a=0;
 
     public OfflineAdapter(ArrayList<String> name, Context ctx) {
         this.name = name;
@@ -41,7 +43,7 @@ public class OfflineAdapter extends RecyclerView.Adapter<OfflineAdapter.ViewHold
         return name.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ArrayList<String> name=new ArrayList<String>();
         Context context;
         TextView title;
@@ -51,6 +53,15 @@ public class OfflineAdapter extends RecyclerView.Adapter<OfflineAdapter.ViewHold
             this.name=name;
 
             title=(TextView)itemView.findViewById(R.id.name);
+            title.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            a=getAdapterPosition();
+            Toast.makeText(context,Integer.toString(a),Toast.LENGTH_LONG).show();
+            Offline off=new Offline();
+            off.play();
         }
     }
 }
