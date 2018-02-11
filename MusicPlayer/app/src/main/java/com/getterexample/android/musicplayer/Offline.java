@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -64,7 +65,11 @@ public class Offline extends AppCompatActivity {
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getlist();
             }
+            else
+                Toast.makeText(this,"permission not granted",Toast.LENGTH_LONG).show();
         }
+        else
+            Toast.makeText(this,"permission not granted",Toast.LENGTH_LONG).show();
     }
 
 
