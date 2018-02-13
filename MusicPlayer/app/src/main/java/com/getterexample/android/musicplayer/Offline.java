@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,10 +20,11 @@ import java.util.ArrayList;
 
 public class Offline extends AppCompatActivity {
 
-    ArrayList<String>  list_of_music=new ArrayList<String>();
+    ArrayList<String>  list_of_music = new ArrayList<String>();
+    ArrayList<String> list_of_path = new ArrayList<String>();
     RecyclerView mrecycle;
     OfflineAdapter offlineAdapter;
-    private MediaPlayer player=null;
+  //  static MediaPlayer player;
     private SeekBar seekMe;
     RecyclerView.LayoutManager layoutManager;
     Uri songUri;
@@ -48,11 +48,11 @@ public class Offline extends AppCompatActivity {
         }
 
         seekMe=(SeekBar)findViewById(R.id.seek);
-        player=new MediaPlayer();
+      //  player=new MediaPlayer();
         mrecycle=(RecyclerView)findViewById(R.id.musiclist);
         layoutManager = new LinearLayoutManager(this);
         mrecycle.setLayoutManager(layoutManager);
-        offlineAdapter = new OfflineAdapter(list_of_music, this);
+        offlineAdapter = new OfflineAdapter(list_of_music, this,list_of_path);
         mrecycle.setAdapter(offlineAdapter);
 
 
@@ -82,25 +82,16 @@ public class Offline extends AppCompatActivity {
         {
             int songTitle=cursorSong.getColumnIndex(MediaStore.Audio.Media.TITLE);
             int songpath=cursorSong.getColumnIndex(MediaStore.Audio.Media.DATA);
+             int i=0;
             do {
                 String currentTitle = cursorSong.getString(songTitle);
                 String fullpath = cursorSong.getString(songpath);
-        //        try {
-       //             player.setDataSource(fullpath);
-       //             player.prepare();
-       //             player.start();
-       //         } catch (IOException e) {
-       //             e.printStackTrace();
-       //         }
                 list_of_music.add(currentTitle);
+                list_of_path.add(fullpath);
 
             }while (cursorSong.moveToNext());
         }
     }
 
-    public void play()
-    {
-
-    }
 
 }
